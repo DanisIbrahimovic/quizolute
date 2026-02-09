@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Quizolute - Your AI E-Learning Study Pal. Upload documents and let AI transform them into flashcards, quizzes, and study summaries.">
+  <meta name="keywords" content="AI, e-learning, study, flashcards, quizzes, education, learning">
+  <meta name="author" content="Quizolute">
+
+  <title>Quizolute - Your E-Learning AI</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/Quizolute-AI_Logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="/" class="logo">
+          <img src="images/Quizolute-AI_Logo.png" alt="Quizolute Logo">
+          <span class="logo-text">Quizolute</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#features" class="nav-link">Features</a></li>
+          <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+          <li><a href="#" class="nav-link">Pricing</a></li>
+          <li>
+            <a href="#upload" class="btn btn-primary">
+              Get Started
+              <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clip-rule="evenodd" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero section" id="upload">
+      <div class="container">
+        <div class="hero-badge">
+          <span class="hero-badge-icon">🚀</span>
+          <span>AI-Powered Learning Made Simple</span>
+        </div>
+
+        <h1 class="hero-title">
+          Transform Your Documents Into<br>
+          <span class="hero-title-gradient">Smart Study Materials</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Upload any document and let our AI create flashcards, quizzes, summaries,
+          and more. Study smarter, not harder.
+        </p>
+
+        <!-- Dropzone -->
+        <div class="dropzone-container">
+          <div class="dropzone" id="dropzone">
+            <div class="dropzone-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
+            </div>
+
+            <h3 class="dropzone-title">Drop your documents here</h3>
+            <p class="dropzone-subtitle">
+              or <span>click to browse</span> your files
+            </p>
+
+            <input type="file" id="fileInput" multiple accept=".pdf,.doc,.docx,.txt,.pptx,.ppt,.png,.jpg,.jpeg,.gif">
+
+            <div class="supported-formats">
+              <span class="format-tag">📄 PDF</span>
+              <span class="format-tag">📝 DOCX</span>
+              <span class="format-tag">📋 TXT</span>
+              <span class="format-tag">📊 PPTX</span>
+              <span class="format-tag">🖼️ Images</span>
+            </div>
+          </div>
+
+          <!-- File List -->
+          <div class="file-list" id="fileList"></div>
+
+          <!-- Mode Selector -->
+          <div class="mode-selector" id="modeSelector">
+            <button class="mode-btn active" data-mode="flashcards">
+              <span class="mode-icon">🎴</span>
+              <span>Flashcards</span>
+            </button>
+            <button class="mode-btn" data-mode="summary">
+              <span class="mode-icon">📚</span>
+              <span>Summary</span>
+            </button>
+            <button class="mode-btn" data-mode="quiz">
+              <span class="mode-icon">📝</span>
+              <span>Quiz</span>
+            </button>
+          </div>
+
+          <!-- Generate Button -->
+          <div class="generate-section" id="generateSection">
+            <button class="btn btn-primary btn-large" id="generateBtn">
+              <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M10 2a1 1 0 011 1v1a1 1 0 01-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 01-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" />
+              </svg>
+              Generate Study Materials
+            </button>
+          </div>
+
+          <!-- Results Container -->
+          <div class="results-container" id="resultsContainer">
+            <!-- Flashcards will be rendered here -->
+          </div>
+        </div>
+
+        <!-- AI Chat Section -->
+        <div class="chat-section" id="chatSection">
+          <div class="chat-header">
+            <div class="chat-title">
+              <span class="chat-icon">🤖</span>
+              <span>Ask Quizolute</span>
+            </div>
+            <p class="chat-subtitle">Ask questions about your documents or any topic</p>
+          </div>
+
+          <div class="chat-messages" id="chatMessages">
+            <div class="chat-message assistant">
+              <div class="message-avatar">🤖</div>
+              <div class="message-content">
+                Hi! I'm your AI study buddy. Upload some documents above and I can help you understand them, or ask me
+                anything!
+              </div>
+            </div>
+          </div>
+
+          <div class="chat-input-container">
+            <input type="text" id="chatInput" class="chat-input" placeholder="Ask a question..." autocomplete="off">
+            <button class="chat-send-btn" id="chatSendBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Web Search -->
+          <div class="search-section">
+            <div class="search-input-container">
+              <input type="text" id="searchInput" class="search-input" placeholder="Search the web...">
+              <button class="search-btn" id="searchBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </button>
+            </div>
+            <div class="search-results" id="searchResults"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features section" id="features">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Supercharge Your Learning</h2>
+          <p class="section-subtitle">
+            Our AI analyzes your documents and creates personalized study tools
+            tailored to your learning style.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="feature-icon">🎴</div>
+            <h3 class="feature-title">Smart Flashcards</h3>
+            <p class="feature-description">
+              Automatically generate flashcards from your notes and documents.
+              Perfect for memorization and quick review sessions.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">📝</div>
+            <h3 class="feature-title">AI Quizzes</h3>
+            <p class="feature-description">
+              Test your knowledge with auto-generated quizzes. Multiple choice,
+              true/false, and open-ended questions included.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">📚</div>
+            <h3 class="feature-title">Concise Summaries</h3>
+            <p class="feature-description">
+              Get the key points from lengthy documents. Our AI extracts
+              the most important information for efficient studying.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <h3 class="feature-title">Concept Maps</h3>
+            <p class="feature-description">
+              Visualize connections between topics with auto-generated
+              concept maps. Perfect for understanding complex subjects.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">📈</div>
+            <h3 class="feature-title">Progress Tracking</h3>
+            <p class="feature-description">
+              Monitor your learning journey with detailed analytics.
+              See what you've mastered and where to focus next.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3 class="feature-title">AI Study Buddy</h3>
+            <p class="feature-description">
+              Ask questions about your documents and get instant,
+              intelligent answers to deepen your understanding.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section" id="how-it-works" style="background: linear-gradient(180deg, #fff 0%, #f3f4f6 100%);">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">How It Works</h2>
+          <p class="section-subtitle">
+            Three simple steps to transform your study experience
+          </p>
+        </div>
+
+        <div class="features-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <article class="feature-card" style="text-align: center;">
+            <div class="feature-icon" style="margin: 0 auto var(--space-6);">1️⃣</div>
+            <h3 class="feature-title">Upload Documents</h3>
+            <p class="feature-description">
+              Drag and drop your PDFs, notes, slides, or images into Quizolute.
+            </p>
+          </article>
+
+          <article class="feature-card" style="text-align: center;">
+            <div class="feature-icon" style="margin: 0 auto var(--space-6);">2️⃣</div>
+            <h3 class="feature-title">AI Processing</h3>
+            <p class="feature-description">
+              Our AI analyzes your content and extracts key concepts and information.
+            </p>
+          </article>
+
+          <article class="feature-card" style="text-align: center;">
+            <div class="feature-icon" style="margin: 0 auto var(--space-6);">3️⃣</div>
+            <h3 class="feature-title">Start Learning</h3>
+            <p class="feature-description">
+              Use flashcards, quizzes, and summaries to master your material.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="images/Quizolute-AI_Logo.png" alt="Quizolute">
+          <span class="footer-logo-text">Quizolute</span>
+        </div>
+
+        <p class="footer-text">© 2026 Quizolute. Your E-Learning AI.</p>
+
+        <nav class="footer-links">
+          <a href="#" class="footer-link">Privacy</a>
+          <a href="#" class="footer-link">Terms</a>
+          <a href="#" class="footer-link">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+
+</html>
